@@ -34,20 +34,20 @@
                 });
             });
 
-        // Load JSON data for inactive users and add red markers
+        // Load JSON data for inactive users and add gray markers
         fetch('全国の地震観測者MAP- 活動休止.json')
             .then(response => response.json())
             .then(data => {
-                var redIcon = L.icon({
-                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+                var grayIcon = L.icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
                     iconSize: [25, 41],
-                    iconAnchor: [12, 41], // 中央下部に配置
+                    iconAnchor: [12, 41],
                     popupAnchor: [1, -34]
                 });
                 
                 data.forEach(user => {
                     L.marker([user.latitude, user.longitude], { 
-                        icon: redIcon
+                        icon: grayIcon
                     }).addTo(map)
                         .bindPopup(`<b>${user.name}</b><br><a href="${user.description}" target="_blank">${user.description}</a><br><a href="${user.description2}" target="_blank">${user.description2}</a>`);
                 });
