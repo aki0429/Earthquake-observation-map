@@ -3,18 +3,26 @@
     "longitude": 141.3585172,
     "latitude": 43.1439841,
     "name": "SapporoCam",
-    "description": "https://x.com/SapporoCam\n無期限活動休止との発表がありました。\nhttps://ur0.cc/Ljml"
+    "description": "https://x.com/SapporoCam ",
+"description 2" : "無期限活動休止との発表がありました。https://ur0.cc/Ljml"
   },
   {
     "longitude": 139.6667767,
     "latitude": 36.0620291,
     "name": "Saitama Sora Cam@無期限活動休止中",
-    "description": "https://x.com/SaitamaSoraCam\n活動休止の発表資料\nhttps://x.com/SaitamaSoraCam/status/1877732517295616366"
+    "description": "https://x.com/SaitamaSoraCam "
+ "description 2":"活動休止の発表資料 https://x.com/SaitamaSoraCam/status/1877732517295616366"
   },
   {
     "longitude": 135.7814691,
     "latitude": 33.4725476,
     "name": "kusimoto",
     "description": "https://x.com/Waka_Kusimoto"
+  },
+  {
+    "longitude": 135.4057914,
+    "latitude": 34.7327113,
+    "name": "AmaCam",
+    "description": "https://x.com/AmagasakiCam"
   }
 ]

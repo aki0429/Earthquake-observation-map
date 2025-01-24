@@ -12,12 +12,6 @@
     "description": "https://x.com/OisoCam"
   },
   {
-    "longitude": 135.4057914,
-    "latitude": 34.7327113,
-    "name": "AmaCam",
-    "description": "https://x.com/AmagasakiCam"
-  },
-  {
     "longitude": 138.9140916,
     "latitude": 37.5324559,
     "name": "Mitsukecam",
@@ -291,7 +285,7 @@
     "longitude": 133.2833918,
     "latitude": 33.9602876,
     "name": "NiihamaCam",
-    "description": "https://x.com/NiihamaC952"
+    "description": "https://x.com/NiihamaCam"
   },
   {
     "longitude": 139.3145107,
