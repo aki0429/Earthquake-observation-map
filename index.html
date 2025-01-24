@@ -37,7 +37,7 @@
             .then(data => {
                 data.forEach(user => {
                     L.marker([user.latitude, user.longitude], { icon: L.icon({ iconUrl: 'path/to/black-marker-icon.png', className: 'black-marker-icon' }) }).addTo(map)
-                        .bindPopup(`<b>${user.name}</b><br><a href="${user.description}" target="_blank">${user.description}</a><br><a href="${user.description 2}" target="_blank">${user.description 2}</a>`);
+                        .bindPopup(`<b>${user.name}</b><br><a href="${user.description}" target="_blank">${user.description}</a><br><a href="${user.description2}" target="_blank">${user.description2}</a>`);
                 });
             });
 
