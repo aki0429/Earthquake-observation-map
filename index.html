@@ -9,7 +9,10 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
     <style>
         #map { height: 800px; }
-        </style>
+        .inactive-marker img {
+            filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%) !important;
+        }
+    </style>
 </head>
 <body>
     <div id="map"></div>
@@ -31,12 +34,21 @@
                 });
             });
 
-        // Load JSON data for inactive users and add black markers
+        // Load JSON data for inactive users and add red markers
         fetch('全国の地震観測者MAP- 活動休止.json')
             .then(response => response.json())
             .then(data => {
+                var redIcon = L.icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41], // 中央下部に配置
+                    popupAnchor: [1, -34]
+                });
+                
                 data.forEach(user => {
-                    L.marker([user.latitude, user.longitude], { icon: L.icon({ iconUrl: 'path/to/black-marker-icon.png', className: 'black-marker-icon' }) }).addTo(map)
+                    L.marker([user.latitude, user.longitude], { 
+                        icon: redIcon
+                    }).addTo(map)
                         .bindPopup(`<b>${user.name}</b><br><a href="${user.description}" target="_blank">${user.description}</a><br><a href="${user.description2}" target="_blank">${user.description2}</a>`);
                 });
             });
@@ -45,8 +57,17 @@
         fetch('全国の地震観測者MAP- あり得ない人.json')
             .then(response => response.json())
             .then(data => {
+                const customIcon = L.divIcon({
+                    html: '<div style="color: red; font-size: 32px;">❌</div>', // サイズを24pxから32pxに変更
+                    className: 'custom-div-icon',
+                    iconSize: [40, 40], // サイズを[30, 30]から[40, 40]に変更
+                    iconAnchor: [20, 20]  // アンカーポイントも調整
+                });
+                
                 data.forEach(user => {
-                    L.marker([user.latitude, user.longitude], { icon: L.icon({ iconUrl: 'https://mt.google.com/vt/icon/name=icons/onion/SHARED-mymaps-pin-container-bg_4x.png,icons/onion/SHARED-mymaps-pin-container_4x.png,icons/onion/1899-blank-shape_pin_4x.png&highlight=ff000000,FF5252,ff000000&scale=2.0', className: 'red-cross-icon' }) }).addTo(map)
+                    L.marker([user.latitude, user.longitude], { 
+                        icon: customIcon 
+                    }).addTo(map)
                         .bindPopup(`<b>${user.name}</b><br><a href="${user.description}" target="_blank">${user.description}</a>`);
                 });
             });
