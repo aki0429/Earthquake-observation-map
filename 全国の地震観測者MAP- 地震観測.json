@@ -382,5 +382,31 @@
     "latitude":43.71017,
     "name":"NiisuCamera",
     "description":"https://x.com/NiisuCamera"
+  },
+  {
+    "longitude":137.15612,
+    "latitude":35.08255,
+    "name":"ToyotaCam-ミタラシ", 
+    "description":"https://x.com/mitarashi_006"
+
+  },
+  {
+    "longitude":140.32099,
+    "latitude":35.52177,
+    "name":"oami cam",
+    "description":"https://youtube.com/@oamicam5151"
+  },
+  {
+    "longitude":145.58281,
+    "latitude":43.33010,
+    "name":"みくご[根室管内地震観測]",
+    "description":"https://youtube.com/channel/UCI7RyA-xOc3bbDO9tNhD6lQ?si=eOSZ0P7TTzSNTos6"
+
+  },
+  {
+    "longitude":-113.55252,
+    "latitude":53.26475,
+    "name":"LeducCam(Dominic)",
+    "description":"https://x.com/Dominic29999"
   }
 ]
