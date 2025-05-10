@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YQL配信者組織図</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
-    <style>
-        #map { height: 800px; }
-        .inactive-marker img {
-            filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%) !important;
-        }
-    </style>
-</head>
-<body>
-    <div id="map"></div>
-    <script>
-        // Leaflet map initialization
+// Leaflet map initialization
         var map = L.map('map').setView([35.6895, 139.6917], 13); // Default to Tokyo
 
         L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
@@ -71,8 +52,4 @@
                         .bindPopup(`<b>${user.name}</b><br><a href="${user.description}" target="_blank">${user.description}</a>`);
                 });
             });
-    </script>
-    <h3>地震観測者マップ<br>このサイトの作成には生成AIを利用しておりますため、一部ミスがある場合があります。<br>その際はお手数ですが、<a href="https://x.com/akki_0429_net">X(旧Twitter)作成者</a> までご連絡ください。
-    </h3>
-</body>
-</html>
+            
