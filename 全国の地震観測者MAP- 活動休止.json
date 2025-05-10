@@ -20,9 +20,30 @@
   },
   {
     "longitude": 140.95731,
-    "latitude": 37.64218,
+    "latitude": 37.64215,
     "name": "Minamisoma City Cam 活動休止中",
     "description": "https://x.com/MinamiSomaCam"
+  },
+  {
+    "longitude":145.58281,
+    "latitude":43.33010,
+    "name":"みくご[根室管内地震観測]",
+    "description":"https://youtube.com/channel/UCI7RyA-xOc3bbDO9tNhD6lQ?si=eOSZ0P7TTzSNTos6"
+
+  },
+  {
+    "longitude": 130.6985709,
+    "latitude": 32.8789808,
+    "name": "kumamotoKitaCam",
+    "description": "https://x.com/cam_kita",
+    "description 2":"更新が2024年1月より無い"
+  },
+  {
+    "longitude": 141.1543303,
+    "latitude": 39.7019558,
+    "name": "Morioka Camera",
+    "description": "https://x.com/MoriokaCamera",
+    "description 2":"鍵垢"
   },
   {
     "longitude": 130.6330497,
@@ -30,5 +51,19 @@
     "name": "KagoshimaCam",
     "description": "https://x.com/KagoshimaCam",
     "description 2":"ログアウト？"
+  },
+  {
+    "longitude": 135.1956311,
+    "latitude": 34.6900806,
+    "name": "地震観測あけぼの",
+    "description": "https://x.com/Bousai1903",
+    "description 2":"鍵垢"
+  },
+  {
+    "longitude": 134.608866,
+    "latitude": 34.1726034,
+    "name": "鳴門地震観測",
+    "description": "https://x.com/Naruto_Quake",
+    "description 2": "ツイート全消し"
   }
 ]
