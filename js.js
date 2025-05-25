@@ -1,55 +1,87 @@
-// Leaflet map initialization
-        var map = L.map('map').setView([35.6895, 139.6917], 13); // Default to Tokyo
+// Create base layers
+var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+});
+var stamenToner = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by Stamen Design, CC BY 3.0 — Map data © OpenStreetMap contributors'
+});
 
-        L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-            attribution: '&copy; <a href="https://www.google.com/intl/ja/help/terms_maps.html">Google</a>'
-        }).addTo(map);
+// Initialize map with a default base layer
+var map = L.map('map', {
+    center: [35.6895, 139.6917],
+    zoom: 13,
+    layers: [osmLayer]  // default base layer
+});
+console.log("Map initialized");
 
-        // Load JSON data and add markers
-        fetch('全国の地震観測者MAP- 地震観測.json')
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(user => {
-                    L.marker([user.latitude, user.longitude]).addTo(map)
-                        .bindPopup(`<b>${user.name}</b><br><a href="${user.description}" target="_blank">${user.description}</a>`);
-                });
-            });
+// 新たなレイヤーグループを作成
+var earthquakeLayer = L.layerGroup().addTo(map);
+var inactiveLayer   = L.layerGroup().addTo(map);
+var invalidLayer    = L.layerGroup().addTo(map);
 
-        // Load JSON data for inactive users and add gray markers
-        fetch('全国の地震観測者MAP- 活動休止.json')
-            .then(response => response.json())
-            .then(data => {
-                var grayIcon = L.icon({
-                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
-                    iconSize: [25, 41],
-                    iconAnchor: [12, 41],
-                    popupAnchor: [1, -34]
-                });
-                
-                data.forEach(user => {
-                    L.marker([user.latitude, user.longitude], { 
-                        icon: grayIcon
-                    }).addTo(map)
-                        .bindPopup(`<b>${user.name}</b><br><a href="${user.description}" target="_blank">${user.description}</a><br><a href="${user.description2}" target="_blank">${user.description2}</a>`);
-                });
-            });
+// Load JSON for 地震観測者 and add markers to earthquakeLayer
+fetch('全国の地震観測者MAP- 地震観測.json')
+    .then(response => response.json())
+    .then(data => {
+        console.log("Loaded 地震観測.json", data);
+        data.forEach(user => {
+            L.marker([user.latitude, user.longitude])
+                .addTo(earthquakeLayer)
+                .bindPopup(`<b>${user.name}</b><br><a href="${user.description}" target="_blank">${user.description}</a>`);
+        });
+    })
+    .catch(error => console.error("Error loading 地震観測.json:", error));
 
-        // Load JSON data for invalid users and add red cross markers
-        fetch('全国の地震観測者MAP- あり得ない人.json')
-            .then(response => response.json())
-            .then(data => {
-                const customIcon = L.divIcon({
-                    html: '<div style="color: red; font-size: 32px;">❌</div>', // サイズを24pxから32pxに変更
-                    className: 'custom-div-icon',
-                    iconSize: [40, 40], // サイズを[30, 30]から[40, 40]に変更
-                    iconAnchor: [20, 20]  // アンカーポイントも調整
-                });
-                
-                data.forEach(user => {
-                    L.marker([user.latitude, user.longitude], { 
-                        icon: customIcon 
-                    }).addTo(map)
-                        .bindPopup(`<b>${user.name}</b><br><a href="${user.description}" target="_blank">${user.description}</a>`);
-                });
-            });
-            
+// Load JSON for 活動休止 and add markers to inactiveLayer
+fetch('全国の地震観測者MAP- 活動休止.json')
+    .then(response => response.json())
+    .then(data => {
+        console.log("Loaded 活動休止.json", data);
+        var grayIcon = L.icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34]
+        });
+        data.forEach(user => {
+            L.marker([user.latitude, user.longitude], { icon: grayIcon })
+                .addTo(inactiveLayer)
+                .bindPopup(`<b>${user.name}</b><br><a href="${user.description}" target="_blank">${user.description}</a><br><a href="${user.description2}" target="_blank">${user.description2}</a>`);
+        });
+    })
+    .catch(error => console.error("Error loading 活動休止.json:", error));
+
+// Load JSON for あり得ない人 and add markers to invalidLayer
+fetch('全国の地震観測者MAP- あり得ない人.json')
+    .then(response => response.json())
+    .then(data => {
+        console.log("Loaded あり得ない人.json", data);
+        const customIcon = L.divIcon({
+            html: '<div style="color: red; font-size: 32px;">❌</div>',
+            className: 'custom-div-icon',
+            iconSize: [40, 40],
+            iconAnchor: [20, 20]
+        });
+        data.forEach(user => {
+            L.marker([user.latitude, user.longitude], { icon: customIcon })
+                .addTo(invalidLayer)
+                .bindPopup(`<b>${user.name}</b><br><a href="${user.description}" target="_blank">${user.description}</a>`);
+        });
+    })
+    .catch(error => console.error("Error loading あり得ない人.json:", error));
+
+// Base layers object for control
+var baseLayers = {
+    "OpenStreetMap": osmLayer,
+    "Stamen Toner": stamenToner
+};
+
+// Overlay layers object for control
+var overlays = {
+    "地震観測者": earthquakeLayer,
+    "活動休止": inactiveLayer,
+    "あり得ない人": invalidLayer
+};
+
+// Add layers control
+L.control.layers(baseLayers, overlays).addTo(map);
