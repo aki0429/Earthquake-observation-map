@@ -231,12 +231,6 @@
     "description": "https://x.com/takuswordone"
   },
   {
-    "longitude": 136.9021486,
-    "latitude": 35.0226458,
-    "name": "Tokaicam",
-    "description": "https://x.com/mitarashi_006"
-  },
-  {
     "longitude": 140.0153213,
     "latitude": 36.8712697,
     "name": "shinaCam 大田原地震観測所",
@@ -361,13 +355,6 @@
     "latitude":43.71017,
     "name":"NiisuCamera",
     "description":"https://x.com/NiisuCamera"
-  },
-  {
-    "longitude":137.15612,
-    "latitude":35.08255,
-    "name":"ToyotaCam-ミタラシ", 
-    "description":"https://x.com/mitarashi_006"
-
   },
   {
     "longitude":140.32099,

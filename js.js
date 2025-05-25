@@ -6,10 +6,11 @@ var stamenToner = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/toner-lite/
     attribution: 'Map tiles by Stamen Design, CC BY 3.0 — Map data © OpenStreetMap contributors'
 });
 
-// Initialize map with a default base layer
+// Initialize map with center set to Tokyo Station (35.681236, 139.767125) for both PC and smartphone
+var zoomLevel = (window.innerWidth <= 600) ? 11 : 13;
 var map = L.map('map', {
-    center: [35.6895, 139.6917],
-    zoom: 13,
+    center: [35.681236, 139.767125],
+    zoom: zoomLevel,
     layers: [osmLayer]  // default base layer
 });
 console.log("Map initialized");

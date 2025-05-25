@@ -65,5 +65,12 @@
     "name": "鳴門地震観測",
     "description": "https://x.com/Naruto_Quake",
     "description 2": "ツイート全消し"
+  },
+  {
+    "longitude":137.15612,
+    "latitude":35.08255,
+    "name":"ToyotaCam-ミタラシ", 
+    "description":"https://x.com/mitarashi_006",
+    "description2": "本人より活動が行えてない旨のご返信がありました。"
   }
 ]

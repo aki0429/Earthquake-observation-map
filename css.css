@@ -1,4 +1,18 @@
-#map { height: 800px; }
-        .inactive-marker img {
-            filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%) !important;
-        }
+#map {
+    height: 800px; /* 800px の1.3倍 */
+}
+
+.inactive-marker img {
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%) !important;
+}
+
+/* スマホ用：マップ領域の高さ調整 */
+@media only screen and (max-width: 600px) {
+    #map {
+        height: calc(100vw * 1.28); /* 0.85 * 1.3 ≈ 1.105 */
+    }
+    h3 {
+        font-size: 0.9em;
+    }
+    /* 必要に応じて他のスマホ用スタイルを追加 */
+}
